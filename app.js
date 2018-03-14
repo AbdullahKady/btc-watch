@@ -21,12 +21,16 @@ const options = {
 const transporter = nodemailer.createTransport(sgTransport(options));
 
 
-console.log('Hi, please enter the following info, leaving min/max empty will work on one value only');
-console.log(`For the mode, enter "k" to fetch the price according to Kraken, else it will be fetched according to Bitstamp's rate`);
+console.log(`
+Hi, please enter the following info, leaving min/max empty will work on one value only.
+For the mode, enter "k" to fetch the price according to Kraken, else it will be fetched according to Bitstamp's rate.
+Enter your email that you would like to recieve the notification on.
+Finally, enter an integer value in seconds for the refresh, this determines how frequently the price will be checked (Default is 30secs)
+`);
 
 prompt.start();
 
-prompt.get(['MIN', 'MAX', 'mode', 'email'], function (err, result) {
+prompt.get(['MIN', 'MAX', 'Mode', 'Email', 'refresh'], function (err, result) {
     if (result.mode === 'k')
         url = 'http://preev.com/pulse/units:btc+usd/sources:kraken';
     else
@@ -34,9 +38,10 @@ prompt.get(['MIN', 'MAX', 'mode', 'email'], function (err, result) {
 
     const MIN = result.MIN;
     const MAX = result.MAX;
-    const MODE = result.mode === 'k' ? 'Kraken' : 'Bitstamp';
+    const MODE = result.Mode === 'k' ? 'Kraken' : 'Bitstamp';
     const URL = url;
-    const REC_EMAIL = result.email;
+    const REC_EMAIL = result.Email;
+    const FREQUENCY = result.refresh ? Number(result.refresh) * 1000 : 30000;
 
     if (MIN === "" && MAX === "") {
         console.log("Minimum and maximum cannot be empty at the same time");
@@ -95,7 +100,7 @@ prompt.get(['MIN', 'MAX', 'mode', 'email'], function (err, result) {
                 } else {
                     console.log("The fetched price didn't meet any limits : " + price);
                 }
-                setTimeout(Request, 3000);
+                setTimeout(Request, FREQUENCY);
             }
         });
 
