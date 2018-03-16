@@ -34,9 +34,57 @@
 
 			<div id="TARGET" class='wrap'>
 				<div class='content'>
-					<h2>Well Hello!</h2>
-					<!-- TO BE FILLED WITH INFO ABOUT ME & FAQ -->
+					<p style="font-size: 7px;">(click outside the box to close it)</p>
+					<h2 class="text-center">Well Hello There!</h2>
+					<table width=100% height=100%>
+						<tr>
+							<td width=50%>
+								<h3 class="text-primary">About</h3>
+								<br>
+								<p>This project is open source, you can check it out on
+									<a href="https://github.com/AbdullahKady/btc-watch">Github</a>, you will also find a CLI version on the Github repo if you want to host it locally, and have control
+									over other variables (changing the price fetching mode, and the frequency of refreshing the price).</p>
+								<br>
+								<p>The website allows you to receive real-time notifications by email for Bitcoin price updates, once the price meets
+									a certain limit (upper&lower limits are allowed), an Email will be sent, and you will be unsubscribed from the service.
+								</p>
+								<br>
+								<p>Implemnted by
+									<strong>Abdullah Elkady</strong>
+									<br>
+									<br>
+									<a href="https://github.com/AbdullahKady">
+										<b>Github</b>
+									</a>
+									<br>
+									<a href="https://www.linkedin.com/in/abdullahkady/">
+										<b>LinkedIn</b>
+									</a>
+								</p>
+							</td>
+
+							<td width=50%>
+								<h3 class="text-primary">FAQ</h3>
+								<br>
+								<strong>How often is the price refreshed?</strong>
+								<p>Currently, it's refreshed every 40 seconds. If you want to control this rate, you can try out the local (CLI) version
+									avaliable on
+									<a href="TODO-COMMIT">Github</a>
+								</p>
+								<br>
+								<strong>What happens if I re-enter a used email address?</strong>
+								<p>Entering an email address that is already subscribed will update the limits associated with the email to the new
+									ones
+								</p>
+								<br>
+								<strong>I recieved an email once the limit was met, why am I not receiving anymore updates ?</strong>
+								<p>Once an email is sent, the email becomes unsubscribed. This happens to prevent redundant emails (a bunch of emails
+									all stating that the price has gone below the limit). However you can re-subscribe to the service instantly.</p>
+							</td>
+						</tr>
+					</table>
 				</div>
+
 			</div>
 
 			<div class="wrap-contact2">
