@@ -7,7 +7,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-app.set('port', process.env.port || 3000);
+app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), () => { console.log("Server started. Listening on port " + app.get('port')); });
 app.use(express.static(__dirname + '/public')); //Serving assets
 app.use(morgan('dev'));

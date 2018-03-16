@@ -1,5 +1,5 @@
 {
-  "name": "Scraper",
+  "name": "btc-watch",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -28,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/AbdullahKady/btc-watch/issues"
   },
+  "engines": {
+    "node": "8.9.4"
+  },
+
   "homepage": "https://github.com/AbdullahKady/btc-watch#readme"
 }
