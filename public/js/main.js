@@ -68,7 +68,7 @@
         $(thisAlert).removeClass('alert-validate');
     }
 
-    $('a').on('click', function () {
+    $('#faq').on('click', function () {
         $('.wrap, a').toggleClass('active');
         $('.wrap-contact2').toggle();
         return false;
