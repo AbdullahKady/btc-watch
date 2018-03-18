@@ -2,7 +2,6 @@
 (function ($) {
     "use strict";
 
-
     /*==================================================================
     [ Focus Contact2 ]*/
     $('.input2').each(function () {
@@ -16,39 +15,11 @@
         })
     })
 
-
-
     /*==================================================================
     [ Validate ]*/
     var email = $('.validate-input input[name="email"]');
     var min = $('.validate-input input[name="min"]');
     var max = $('.validate-input input[name="max"]');
-
-
-    // $('.validate-form').on('submit', function () {
-    //     var check = true;
-    //     var minCheck = $(min).val() == '' || $(min).val() == undefined;
-    //     var maxCheck = $(max).val() == '' || $(max).val() == undefined;
-
-    //     if (minCheck && maxCheck) {
-    //         showValidate(min);
-    //         check = false;
-    //     }
-
-    //     if (!minCheck && !maxCheck) {
-    //         if (Number($(min).val()) > Number($(max).val())) {
-    //             showValidate(max);
-    //             check = false;
-    //         }
-    //     }
-
-    //     if ($(email).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-    //         showValidate(email);
-    //         check = false;
-    //     }
-    //     return check;
-    // });
-
 
     $('.validate-form .input2').each(function () {
         $(this).focus(function () {
@@ -68,25 +39,22 @@
         $(thisAlert).removeClass('alert-validate');
     }
 
-    $('#faq').on('click', function () {
-        $('.wrap, a').toggleClass('active');
+    
+    var modal = document.getElementById('myModal');
+    $('#faq').on('click', () => {
+        modal.style.display = "block";
         $('.wrap-contact2').toggle();
-        return false;
     });
 
-    $('#TARGET').click(function (event) {
-        event.stopPropagation();
-    });
-
-    $('body').click(function (evt) {
-        if ($('.wrap').hasClass('active')) {
-            $('.wrap, a').toggleClass('active');
+    $('body').click(function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
             $('.wrap-contact2').toggle();
         }
     });
 
     $('.contact2-form-btn').on('click', function () {
-
+        console.log("INSIDE POST");
         var minCheck = $(min).val() == '' || $(min).val() == undefined;
         var maxCheck = $(max).val() == '' || $(max).val() == undefined;
 
@@ -118,6 +86,8 @@
         }
 
         var data = JSON.stringify({ "email": email.val(), "min": min.val(), "max": max.val() });
+        console.log("All good, data: ");
+        console.log(data);
         $.ajax({
             type: "POST",
             url: "/",
@@ -126,6 +96,7 @@
             dataType: "json",
             success: function (data) { alert(data); },
             failure: function (errMsg) {
+                console.log("FAILED WHY");
                 alert(errMsg);
             }
         });
@@ -139,6 +110,5 @@
     });
 
 
-
-
 })(jQuery);
+
